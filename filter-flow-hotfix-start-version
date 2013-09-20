@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Runs during git flow hotfix start
+#
+# Positional arguments:
+# $1 Version
+#
+# Return VERSION - When VERSION is returned empty, git-flow will stop as the
+# version is necessary
+#
+# The following variables are available as they are exported by git-flow:
+#
+# MASTER_BRANCH - The branch defined as Master
+# DEVELOP_BRANCH - The branch defined as Develop
+
+VERSION=$1
+
+# Implement your script here.
+
+SCRIPT_PATH="$0"
+while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=`readlink "$SCRIPT_PATH"`; done
+. "$(dirname $SCRIPT_PATH)/modules/functions.sh"
+
+if [ -z $VERSION ]; then
+    VERSION="PATCH"
+fi
+
+VERSION_FILE=$(__get_version_file)
+
+VERSION=`$(dirname $SCRIPT_PATH)/modules/bump-version.sh $VERSION`
+if [ $? -ne 0 ]; then
+    __print_fail "Unable to bump version."
+    exit 1
+fi
+
+echo ${VERSION}
+exit 0
