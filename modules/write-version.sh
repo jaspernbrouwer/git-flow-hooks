@@ -3,7 +3,7 @@
 VERSION_FILE=$(__get_version_file)
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
 
-if [ ! -z $VERSION_PREFIX ]; then
+if [ ! -z "$VERSION_PREFIX" ]; then
     VERSION=${VERSION#$VERSION_PREFIX}
 fi
 

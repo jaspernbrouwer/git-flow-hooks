@@ -13,7 +13,7 @@ function __get_commit_files {
 }
 
 function __get_version_file {
-    if [ -z $VERSION_FILE ]; then
+    if [ -z "$VERSION_FILE" ]; then
         VERSION_FILE="VERSION"
     fi
 
@@ -21,7 +21,7 @@ function __get_version_file {
 }
 
 function __get_hotfix_version_bumplevel {
-    if [ -z $VERSION_BUMPLEVEL_HOTFIX ]; then
+    if [ -z "$VERSION_BUMPLEVEL_HOTFIX" ]; then
         VERSION_BUMPLEVEL_HOTFIX="PATCH"
     fi
 
@@ -29,7 +29,7 @@ function __get_hotfix_version_bumplevel {
 }
 
 function __get_release_version_bumplevel {
-    if [ -z $VERSION_BUMPLEVEL_RELEASE ]; then
+    if [ -z "$VERSION_BUMPLEVEL_RELEASE" ]; then
         VERSION_BUMPLEVEL_RELEASE="PATCH"
     fi
 

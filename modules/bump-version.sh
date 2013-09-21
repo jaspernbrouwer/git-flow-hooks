@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if [ -z $VERSION ]; then
-    if [ $1 == "hotfix" ]; then
+if [ -z "$VERSION" ]; then
+    if [ "$1" == "hotfix" ]; then
         VERSION=$(__get_hotfix_version_bumplevel)
-    elif [ $1 == "release" ]; then
+    elif [ "$1" == "release" ]; then
         VERSION=$(__get_release_version_bumplevel)
     else
         VERSION="PATCH"
