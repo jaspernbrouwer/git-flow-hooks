@@ -21,17 +21,16 @@ BASE=$4
 # Implement your script here.
 
 SCRIPT_PATH="$0"
-while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=`readlink "$SCRIPT_PATH"`; done
+while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
-VERSION_FILE=$(__get_version_file)
-VERSION_PREFIX=`git config --get gitflow.prefix.versiontag`
-
-if [ ! -z $VERSION_PREFIX ]; then
-    VERSION=${VERSION#$VERSION_PREFIX}
+if [ -f "$(dirname $SCRIPT_PATH)/modules/config.sh" ]; then
+    . "$(dirname $SCRIPT_PATH)/modules/config.sh"
 fi
 
-echo -n ${VERSION} > $VERSION_FILE
-git commit -a -m "Bumped version to $VERSION"
+. "$(dirname $SCRIPT_PATH)/modules/write-version.sh"
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 exit 0

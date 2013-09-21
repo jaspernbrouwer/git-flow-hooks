@@ -18,20 +18,17 @@ VERSION=$1
 # Implement your script here.
 
 SCRIPT_PATH="$0"
-while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=`readlink "$SCRIPT_PATH"`; done
+while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
-if [ -z $VERSION ]; then
-    VERSION="PATCH"
+if [ -f "$(dirname $SCRIPT_PATH)/modules/config.sh" ]; then
+    . "$(dirname $SCRIPT_PATH)/modules/config.sh"
 fi
 
-VERSION_FILE=$(__get_version_file)
-
-VERSION=`$(dirname $SCRIPT_PATH)/modules/bump-version.sh $VERSION`
+. "$(dirname $SCRIPT_PATH)/modules/bump-version.sh" hotfix
 if [ $? -ne 0 ]; then
-    __print_fail "Unable to bump version."
     exit 1
 fi
 
-echo ${VERSION}
+echo $VERSION
 exit 0

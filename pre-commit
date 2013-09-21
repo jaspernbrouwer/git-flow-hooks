@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH="$0"
-while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=`readlink "$SCRIPT_PATH"`; done
+while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
 HOOK_STATUS=0
