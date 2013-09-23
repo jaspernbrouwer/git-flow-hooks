@@ -40,13 +40,12 @@ VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
 VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | tail -1)
 
 if [ ! -z "$VERSION_TAG" ]; then
-    VERSION_CURRENT=$VERSION_TAG
     if [ ! -z "$VERSION_PREFIX" ]; then
         VERSION_CURRENT=${VERSION_TAG#$VERSION_PREFIX}
+    else
+        VERSION_CURRENT=$VERSION_TAG
     fi
 fi
-
-echo $VERSION_CURRENT
 
 # read version file (if version not found by tags)
 
