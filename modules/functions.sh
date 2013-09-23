@@ -4,6 +4,13 @@ COLOR_RED=$(printf '\e[0;31m')
 COLOR_DEFAULT=$(printf '\e[m')
 ICON_CROSS=$(printf $COLOR_RED'✘'$COLOR_DEFAULT)
 
+ROOT_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
+HOOKS_DIR=$(dirname $SCRIPT_PATH)
+
+if [ -f "$ROOT_DIR/.git/git-flow-hooks-config.sh" ]; then
+    . "$ROOT_DIR/.git/git-flow-hooks-config.sh"
+fi
+
 function __print_fail {
     echo -e "  $ICON_CROSS $1"
 }
@@ -17,7 +24,7 @@ function __get_version_file {
         VERSION_FILE="VERSION"
     fi
 
-    echo $VERSION_FILE
+    echo "$ROOT_DIR/$VERSION_FILE"
 }
 
 function __get_hotfix_version_bumplevel {

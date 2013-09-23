@@ -17,15 +17,10 @@ VERSION=$1
 
 # Implement your script here.
 
-SCRIPT_PATH="$0"
-while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
+SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
-if [ -f "$(dirname $SCRIPT_PATH)/modules/config.sh" ]; then
-    . "$(dirname $SCRIPT_PATH)/modules/config.sh"
-fi
-
-. "$(dirname $SCRIPT_PATH)/modules/bump-version.sh" hotfix
+. "$HOOKS_DIR/modules/bump-version.sh" hotfix
 if [ $? -ne 0 ]; then
     exit 1
 fi

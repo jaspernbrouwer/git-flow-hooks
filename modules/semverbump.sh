@@ -49,7 +49,7 @@ fi
 
 if [ -z "$VERSION_CURRENT" ]; then
     if [ -z "$VERSION_FILE" ]; then
-        ROOT_DIR=$(git rev-parse --show-toplevel)
+        ROOT_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
         VERSION_FILE="$ROOT_DIR/VERSION"
     fi
 

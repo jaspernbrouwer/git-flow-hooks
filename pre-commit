@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-SCRIPT_PATH="$0"
-while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
+SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
 HOOK_STATUS=0
 
 # prevent master commits
-. "$(dirname $SCRIPT_PATH)/modules/prevent-master-commits.sh"
+. "$HOOKS_DIR/modules/prevent-master-commits.sh"
 if [ $? -ne 0 ]; then
     HOOK_STATUS=1
 fi
 
 # prevent-merge-marker-commits
-. "$(dirname $SCRIPT_PATH)/modules/prevent-merge-marker-commits.sh"
+. "$HOOKS_DIR/modules/prevent-merge-marker-commits.sh"
 if [ $? -ne 0 ]; then
     HOOK_STATUS=1
 fi

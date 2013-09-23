@@ -19,7 +19,7 @@ Install
 - `git clone` this repository somewhere on your disk.
 - Remove the `.git/hooks` directory in your repository.
 - Symlink the git-flow-hooks directory to `.git/hooks` in your repository.
-- Optionally copy `modules/config.sh.dist` to `modules/config.sh` and set values according to your wishes.
+- Optionally copy `.git/hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and set values according to your wishes.
 
 Update
 ------
