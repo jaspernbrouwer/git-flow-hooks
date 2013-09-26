@@ -37,7 +37,7 @@ function __get_hotfix_version_bumplevel {
 
 function __get_release_version_bumplevel {
     if [ -z "$VERSION_BUMPLEVEL_RELEASE" ]; then
-        VERSION_BUMPLEVEL_RELEASE="PATCH"
+        VERSION_BUMPLEVEL_RELEASE="MINOR"
     fi
 
     echo $VERSION_BUMPLEVEL_RELEASE
