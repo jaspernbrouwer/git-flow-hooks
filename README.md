@@ -49,7 +49,7 @@ If the commands are run with version, that version will be used (no bumping).
 Automatic tag messages
 ----------------------
 
-If you want tag messages to be automated (you won't be bothered your editor to specify it), use the following configuration options:
+If you want tag messages to be automated (you won't be bothered with your editor to specify it), use the following configuration options:
 
     $ git config gitflow.hotfix.finish.message "Hotfix %tag%"
     $ git config gitflow.release.finish.message "Release %tag%"
