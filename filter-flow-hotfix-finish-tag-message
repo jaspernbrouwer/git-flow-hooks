@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Runs during git flow hotfix finish and a tag message is given
+#
+# Positional arguments:
+# $1 Message
+# $2 Full version
+#
+# Return MESSAGE
+#
+# The following variables are available as they are exported by git-flow:
+#
+# MASTER_BRANCH - The branch defined as Master
+# DEVELOP_BRANCH - The branch defined as Develop
+
+MESSAGE="$1"
+VERSION="$2"
+
+# Implement your script here.
+
+SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
+. "$(dirname $SCRIPT_PATH)/modules/functions.sh"
+
+. "$HOOKS_DIR/modules/format-tag-message.sh"
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+echo "${MESSAGE}"
+exit 0
