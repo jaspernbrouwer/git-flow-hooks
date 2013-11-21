@@ -22,6 +22,14 @@ Install
 - Symlink the git-flow-hooks directory to `.git/hooks` in your repository.
 - Optionally copy `.git/hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and set values according to your wishes.
 
+### OS X
+
+OS X doesn't support `sort -V`, which is used to sort git tags by version number, which in turn is needed to correctly bump versions.
+
+On OS X you can install [coreutils][6] (using [MacPorts][7] or [Homebrew][8]), after which `gsort -V` can be used. If it's located in `/opt/local/bin/gsort` we will pick it up automatically. Otherwise we fall back to `/usr/bin/sort`.
+
+Optionally you can use the configuration option `VERSION_SORT` to point to a different command.
+
 Update
 ------
 
@@ -70,3 +78,6 @@ The scripts for preventing master and merge marker commits are based on [git-hoo
 [3]: https://github.com/petervanderdoes/gitflow/blob/master/LICENSE
 [4]: https://github.com/Sitebase/git-hooks
 [5]: https://github.com/petervanderdoes/gitflow/wiki/Reference:-Configuration
+[6]: http://www.gnu.org/software/coreutils
+[7]: http://www.macports.org/
+[8]: http://brew.sh/
