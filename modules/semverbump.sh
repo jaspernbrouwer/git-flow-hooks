@@ -12,6 +12,16 @@ function __print_version {
     exit 0
 }
 
+# determine sort command
+
+if [ ! -z "$VERSION_SORT" ]; then
+    if [ ! -f "/opt/local/bin/gsort" ]; then
+        VERSION_SORT="/opt/local/bin/gsort -V"
+    else
+        VERSION_SORT="/usr/bin/sort -V"
+    fi
+fi
+
 # parse arguments
 
 if [ $# -gt 2 ]; then
@@ -37,7 +47,7 @@ fi
 # read git tags
 
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
-VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | tail -1)
+VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | $VERSION_SORT | tail -1)
 
 if [ ! -z "$VERSION_TAG" ]; then
     if [ ! -z "$VERSION_PREFIX" ]; then
