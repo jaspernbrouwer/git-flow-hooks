@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 function __print_usage {
-    echo "Usage: $(basename $0) [major|minor|patch|<semver>]"
+    echo "Usage: $(basename $0) [major|minor|patch|<semver>] [<version_file>]"
     echo "    major|minor|patch: Version will be bumped accordingly."
-    echo "    <semver>:          Version won't be bumped."
+    echo "    <semver>:          Exact version to use (it won't be bumped)."
+    echo "    <version_file>:    File that contains the current version."
     exit 1
 }
 
@@ -29,7 +30,7 @@ if [ $# -gt 2 ]; then
 fi
 
 VERSION_ARG="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
-VERSION_FILE=$2
+VERSION_FILE="$2"
 
 if [ -z "$VERSION_ARG" ] || [ "$VERSION_ARG" == "PATCH" ]; then
     VERSION_UPDATE_MODE="PATCH"
