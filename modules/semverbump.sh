@@ -15,9 +15,11 @@ function __print_version {
 
 # determine sort command
 
-if [ ! -z "$VERSION_SORT" ]; then
-    if [ ! -f "/opt/local/bin/gsort" ]; then
+if [ -z "$VERSION_SORT" ]; then
+    if [ -x "/opt/local/bin/gsort" ]; then
         VERSION_SORT="/opt/local/bin/gsort -V"
+    elif [ -x "/usr/local/bin/gsort" ]; then
+        VERSION_SORT="/usr/local/bin/gsort -V"
     else
         VERSION_SORT="/usr/bin/sort -V"
     fi
