@@ -36,8 +36,7 @@ elif [ "$VERSION_ARG" == "MINOR" ]; then
     VERSION_UPDATE_MODE=$VERSION_ARG
 elif [ "$VERSION_ARG" == "MAJOR" ]; then
     VERSION_UPDATE_MODE=$VERSION_ARG
-elif echo "$VERSION_ARG" | grep -E '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$' > /dev/null
-then
+elif [ $(echo "$VERSION_ARG" | grep -E '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$') ]; then
     # semantic version passed as argument
     VERSION_BUMPED=$VERSION_ARG
     __print_version
