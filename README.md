@@ -26,7 +26,7 @@ Install
 
 OS X doesn't support `sort -V`, which is used to sort git tags by version number, which in turn is needed to correctly bump versions.
 
-On OS X you can install [coreutils][6] (using [MacPorts][7] or [Homebrew][8]), after which `gsort -V` can be used. If it's located in `/opt/local/bin/gsort` we will pick it up automatically. Otherwise we fall back to `/usr/bin/sort`.
+On OS X you can install [coreutils][6] (using [MacPorts][7] or [Homebrew][8]), after which `gsort -V` can be used. If it's located at `/opt/local/bin/gsort` or `/usr/local/bin/gsort` we will pick it up automatically. Otherwise we fall back to `/usr/bin/sort`.
 
 Optionally you can use the configuration option `VERSION_SORT` to point to a different command.
 
