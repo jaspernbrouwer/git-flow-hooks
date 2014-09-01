@@ -29,6 +29,7 @@ if [ $# -gt 2 ]; then
 fi
 
 VERSION_ARG="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
+VERSION_FILE=$2
 
 if [ -z "$VERSION_ARG" ] || [ "$VERSION_ARG" == "PATCH" ]; then
     VERSION_UPDATE_MODE="PATCH"
