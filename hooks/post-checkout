@@ -1,0 +1,10 @@
+#!/bin/bash -xv
+
+echo "Git post-checkout hook for git-flow init."
+
+SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIPT_PATH"); done
+. "$(dirname $SCRIPT_PATH)/modules/functions.sh"
+
+if ! gitflow_is_initialized; then
+    git flow init --default --force
+fi

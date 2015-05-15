@@ -42,3 +42,39 @@ function __get_release_version_bumplevel {
 
     echo $VERSION_BUMPLEVEL_RELEASE
 }
+
+
+git_local_branch_exists() {
+	[ -n "$1" ] || die "Missing branch name"
+	[ -n "$(git for-each-ref --format='%(refname:short)' refs/heads/$1)" ]
+}
+
+# Function used to check if the repository is git-flow enabled.
+gitflow_has_master_configured() {
+	local master
+
+	master=$(git config --get gitflow.branch.master)
+	[ "$master" != "" ] && git_local_branch_exists "$master"
+}
+
+gitflow_has_develop_configured() {
+	local develop
+
+	develop=$(git config --get gitflow.branch.develop)
+	[ "$develop" != "" ] && git_local_branch_exists "$develop"
+}
+
+gitflow_has_prefixes_configured() {
+	git config --get gitflow.prefix.feature >/dev/null 2>&1     && \
+	git config --get gitflow.prefix.release >/dev/null 2>&1     && \
+	git config --get gitflow.prefix.hotfix >/dev/null 2>&1      && \
+	git config --get gitflow.prefix.support >/dev/null 2>&1     && \
+	git config --get gitflow.prefix.versiontag >/dev/null 2>&1
+}
+
+gitflow_is_initialized() {
+	gitflow_has_master_configured                    && \
+	gitflow_has_develop_configured                   && \
+	[ "$(git config --get gitflow.branch.master)" != "$(git config --get gitflow.branch.develop)" ] && \
+	gitflow_has_prefixes_configured
+}
