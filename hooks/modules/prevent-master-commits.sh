@@ -2,7 +2,7 @@
 
 CURRENT_BRANCH=$(git symbolic-ref HEAD)
 
-if [ "$CURRENT_BRANCH" == "refs/heads/master" ]; then
+if gitflow_is_initialized && [ "$CURRENT_BRANCH" == "refs/heads/master" ]; then
     __print_fail "Direct commits to the master branch are not allowed."
     return 1
 else
