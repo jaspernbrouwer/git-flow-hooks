@@ -17,40 +17,74 @@ Usage
 Install
 -------
 
-- `git clone` this repository somewhere on your disk.
-- Remove the `.git/hooks` directory in your repository.
-- Symlink the git-flow-hooks directory to `.git/hooks` in your repository.
-- Optionally copy `.git/hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and set values according to your wishes.
+Clone this repository somewhere on your disk.
+
+```sh
+git clone git@github.com:jaspernbrouwer/git-flow-hooks.git
+```
+
+Whenever your read `/path/to/git-flow-hooks`, replace it with the actual path to your clone/working copy.
 
 ### OS X
 
 OS X doesn't support `sort -V`, which is used to sort git tags by version number, which in turn is needed to correctly bump versions.
 
-On OS X you can install [coreutils][6] (using [MacPorts][7] or [Homebrew][8]), after which `gsort -V` can be used. If it's located at `/opt/local/bin/gsort` or `/usr/local/bin/gsort` we will pick it up automatically. Otherwise we fall back to `/usr/bin/sort`.
+On OS X you can install [coreutils][6] (using [MacPorts][7] or [Homebrew][8]), after which `gsort -V` can be used.
+If it's located at `/opt/local/bin/gsort` or `/usr/local/bin/gsort` we will pick it up automatically.
+Otherwise we fall back to `/usr/bin/sort`.
 
 Optionally you can use the configuration option `VERSION_SORT` to point to a different command.
+
+Activate
+--------
+
+Initialize git-flow.
+
+```sh
+git flow init
+```
+
+It will ask you some questions, the last will be `Hooks and filters directory?`, which you can answer with `/path/to/git-flow-hooks`.
+
+If you've already initialized git-flow, you can still set/change the path manually.
+
+```sh
+git config gitflow.path.hooks /path/to/git-flow-hooks
+```
 
 Update
 ------
 
-- Run `git pull` in the git-flow-hooks directory.
+Simply pull any updates from origin.
 
-That's it, all your repositories that have symlinked git-flow-hooks will use the latest version.
+```sh
+cd /path/to/git-flow-hooks
+git pull
+```
+
+That's it, all your repositories that have git-flow initialized and use `/path/to/git-flow-hooks` as hooks and filters directory will be up-to-date.
 
 Configuration
 -------------
 
-Copy the file `.git/hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and change whatever you like. This is completely optional.
+Copy the file `/path/to/git-flow-hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and change whatever you like.
+This is completely optional.
 
-[git-flow (AVH Edition)][1] has some useful configuration options too. See its [wiki][5] for a complete list.
+[git-flow (AVH Edition)][1] has some useful configuration options too.
+See its [wiki][5] for a complete list.
 Or you can type `git flow <command> [<subcommand>] --help`.
 
 Starting releases and hotfixes
 ------------------------------
 
-If `git flow release start` and `git flow hotfix start` are run without a version, the version will be bumped automatically. Releases will be bumped at the minor level (`1.2.3` becomes `1.3.0`), hotfixes at the patch level (`1.2.3` becomes `1.2.4`). The hooks will look at the git tags to find the version to bump. If no tags are found, it looks for the version-file. If that isn't found, it assumes the current version is `0.0.0`.
+If `git flow release start` and `git flow hotfix start` are run without a version, the version will be bumped automatically.
+Releases will be bumped at the minor level (`1.2.3` becomes `1.3.0`), hotfixes at the patch level (`1.2.3` becomes `1.2.4`).
+The hooks will look at the git tags to find the version to bump.
+If no tags are found, it looks for the version-file.
+If that isn't found, it assumes the current version is `0.0.0`.
 
-Alternatively you may use `patch`, `minor` and `major` as version. A bump of that level will take place.
+Alternatively you may use `patch`, `minor` and `major` as version.
+A bump of that level will take place.
 
 If the commands are run with version, that version will be used (no bumping).
 
@@ -59,8 +93,10 @@ Automatic tag messages
 
 If you want tag messages to be automated (you won't be bothered with your editor to specify it), use the following configuration options:
 
-    $ git config gitflow.hotfix.finish.message "Hotfix %tag%"
-    $ git config gitflow.release.finish.message "Release %tag%"
+```sh
+git config gitflow.hotfix.finish.message "Hotfix %tag%"
+git config gitflow.release.finish.message "Release %tag%"
+```
 
 If you like, you can change the tag-placeholder (`%tag%` in the example above) in the git-flow-hooks configuration.
 
