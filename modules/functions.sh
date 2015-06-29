@@ -53,7 +53,7 @@ function __get_use_changelog {
 
 function __get_changelog_file {
     if [ -z "$CHANGELOG_FILE" ]; then
-        $CHANGELOG_FILE="CHANGELOG"
+        CHANGELOG_FILE="CHANGELOG"
     fi
 
     echo "$ROOT_DIR/$CHANGELOG_FILE"
