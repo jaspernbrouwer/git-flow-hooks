@@ -44,19 +44,19 @@ function __get_release_version_bumplevel {
 }
 
 function __get_current_version {
-	# read git tags
-	VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
-	VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | $VERSION_SORT | tail -1)
+    # read git tags
+    VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
+    VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | $VERSION_SORT | tail -1)
 
-	if [ ! -z "$VERSION_TAG" ]; then
-		if [ ! -z "$VERSION_PREFIX" ]; then
-			VERSION_CURRENT=${VERSION_TAG#$VERSION_PREFIX}
-		else
-			VERSION_CURRENT=$VERSION_TAG
-		fi
-	fi
+    if [ ! -z "$VERSION_TAG" ]; then
+        if [ ! -z "$VERSION_PREFIX" ]; then
+            VERSION_CURRENT=${VERSION_TAG#$VERSION_PREFIX}
+        else
+            VERSION_CURRENT=$VERSION_TAG
+        fi
+    fi
 
-	echo $VERSION_CURRENT
+    echo $VERSION_CURRENT
 }
 
 function __get_use_changelog {
