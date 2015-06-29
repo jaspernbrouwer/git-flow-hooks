@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 function __print_usage {
-    echo "Usage: $(basename $0) [<version>] [<changelog_file>]"
-    echo "    <version>:          The current version."
-    echo "    <changelog_file>:    File that contains the changes."
+    echo "Usage: $(basename $0) [<version_current>] [<changelog_file>]"
+    echo "    <version_current>:          The current version (before bump)."
+    echo "    <changelog_file>:           File that contains the changes."
     exit 1
 }
 
@@ -14,13 +14,16 @@ if [ $# -gt 2 ]; then
 fi
 
 ROOT_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
-VERSION="$1"
-CHANGELOG_FILE="$2"
+VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
+VERSION_CURRENT="$1"
+VERSION="$VERSION_PREFIX$VERSION_CURRENT"
+CHANGELOG_FILE_NAME="$2"
+CHANGELOG_FILE="$ROOT_DIR/$CHANGELOG_FILE_NAME"
 
 if [ -f "$CHANGELOG_FILE" ]; then
     TEMP_FILE="$ROOT_DIR/tmpfile"
-    echo "Version $VERSION:" > $TEMP_FILE
-    git log --no-merges --pretty=format:" * %s (%an)" "v$VERSION"...HEAD >> $TEMP_FILE
+    echo "Version $VERSION_CURRENT:" > $TEMP_FILE
+    git log --no-merges --pretty=format:" * %s (%an)" "$VERSION"...HEAD >> $TEMP_FILE
     echo "" >> $TEMP_FILE
     echo "" >> $TEMP_FILE
     cat $CHANGELOG_FILE >> $TEMP_FILE
@@ -28,7 +31,7 @@ if [ -f "$CHANGELOG_FILE" ]; then
     git add $CHANGELOG_FILE
     git commit -m "Wrote changes $CHANGELOG_FILE"
 else
-    echo "Version $VERSION:" > $CHANGELOG_FILE
+    echo "Version $VERSION_CURRENT:" > $CHANGELOG_FILE
     git log --pretty=format:" * %s (%an)" >> $CHANGELOG_FILE
     echo "" >> $CHANGELOG_FILE
     echo "" >> $CHANGELOG_FILE
