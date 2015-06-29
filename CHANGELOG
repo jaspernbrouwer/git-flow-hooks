@@ -1,3 +1,8 @@
+Version v1.0.7:
+ * Fixing version text in CHANGELOG (Michael Delle)
+ * Bumped version to 1.0.7 (Michael Delle)
+ * Fixing ChangeLog (Michael Delle)
+
 Version 1.0.6:
  * Moving ChangeLog to git flow finish (Michael Delle)
  * Bumped version to 1.0.6 (Michael Delle)
