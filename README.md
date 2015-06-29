@@ -10,6 +10,7 @@ What does it do?
 - Prevent merge marker commits.
 - Automatically bump versions when starting a release or hotfix. Versions are generated, written to file and committed.
 - Automatically specify tag messages.
+- Automatically creates a CHANGELOG file if USE_CHANGELOG=true.
 
 Usage
 =====
