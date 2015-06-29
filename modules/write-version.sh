@@ -8,9 +8,8 @@ if [ ! -z "$VERSION_PREFIX" ]; then
 fi
 
 echo -n "$VERSION" > $VERSION_FILE && \
-	git add $VERSION_FILE
-    #git add $VERSION_FILE && \
-    #git commit -m "Bumped version to $VERSION"
+    git add $VERSION_FILE && \
+    git commit -m "Bumped version to $VERSION"
 
 if [ $? -ne 0 ]; then
     __print_fail "Unable to write version to $VERSION_FILE."

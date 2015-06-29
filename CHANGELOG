@@ -1,6 +1,10 @@
-Version 1.0.5:
+Version 1.0.6:
  * Moving ChangeLog to git flow finish (Michael Delle)
  * Bumped version to 1.0.6 (Michael Delle)
+
+Version 1.0.5:
+ * Adding CHANGE_LOG (Michael Delle)
+ * Bumped version to 1.0.5 (Michael Delle)
 
 Version 1.0.4:
  * Merge branch 'hotfix/1.0.4' (Michael Delle)
