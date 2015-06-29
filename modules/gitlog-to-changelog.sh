@@ -25,13 +25,13 @@ if [ -f "$CHANGELOG_FILE" ]; then
     echo "" >> $TEMP_FILE
     cat $CHANGELOG_FILE >> $TEMP_FILE
     mv $TEMP_FILE $CHANGELOG_FILE
-    #git add $CHANGELOG_FILE
-    #git commit -m "Wrote changes $CHANGELOG_FILE"
+    git add $CHANGELOG_FILE
+    git commit -m "Wrote changes $CHANGELOG_FILE"
 else
     echo "Version $VERSION:" > $CHANGELOG_FILE
     git log --pretty=format:" * %s (%an)" >> $CHANGELOG_FILE
     echo "" >> $CHANGELOG_FILE
     echo "" >> $CHANGELOG_FILE
-    #git add $CHANGELOG_FILE
-    #git commit -m "Added CHANGELOG file"
+    git add $CHANGELOG_FILE
+    git commit -m "Added CHANGELOG file"
 fi
