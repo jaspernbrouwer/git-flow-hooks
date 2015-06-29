@@ -50,3 +50,11 @@ function __get_use_changelog {
     
     echo $USE_CHANGELOG
 }
+
+function __get_changelog_file {
+    if [ -z "$CHANGELOG_FILE" ]; then
+        $CHANGELOG_FILE="CHANGELOG"
+    fi
+
+    echo "$ROOT_DIR/$CHANGELOG_FILE"
+}
