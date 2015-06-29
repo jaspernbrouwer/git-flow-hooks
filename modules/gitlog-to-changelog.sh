@@ -15,16 +15,16 @@ fi
 
 ROOT_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
 VERSION="$1"
-CHANGELOG_FILE="$ROOT_DIR/$2"
+CHANGELOG_FILE="$2"
 
-if [ -f $CHANGELOG_FILE ]; then
+if [ -f "$CHANGELOG_FILE" ]; then
     TEMP_FILE="$ROOT_DIR/tmpfile"
     echo "Version $VERSION:" > $TEMP_FILE
     git log --no-merges --pretty=format:" * %s (%an)" "v$VERSION"...HEAD >> $TEMP_FILE
     echo "" >> $TEMP_FILE
     echo "" >> $TEMP_FILE
     cat $CHANGELOG_FILE >> $TEMP_FILE
-    mv tmpfile $CHANGELOG_FILE
+    mv $TEMP_FILE $CHANGELOG_FILE
     #git add $CHANGELOG_FILE
     #git commit -m "Wrote changes $CHANGELOG_FILE"
 else
