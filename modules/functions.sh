@@ -45,7 +45,7 @@ function __get_release_version_bumplevel {
 
 function __get_use_changelog {
     if [ -z "$USE_CHANGELOG" ]; then
-        USE_CHANGELOG="No"
+        USE_CHANGELOG=false
     fi
     
     echo $USE_CHANGELOG
