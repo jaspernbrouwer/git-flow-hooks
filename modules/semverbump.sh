@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 function __print_usage {
-    echo "Usage: $(basename $0) [major|minor|patch|<semver>] [<version_file>]"
+    echo "Usage: $(basename $0) [major|minor|patch|<semver>] [<version_file>] [<version_sort>]"
     echo "    major|minor|patch: Version will be bumped accordingly."
     echo "    <semver>:          Exact version to use (it won't be bumped)."
     echo "    <version_file>:    File that contains the current version."
+    echo "    <version_sort>:    Absolute path to sort binary with optional parameters."
     exit 1
 }
 
@@ -12,6 +13,16 @@ function __print_version {
     echo $VERSION_BUMPED
     exit 0
 }
+
+# parse arguments
+
+if [ $# -gt 3 ]; then
+    __print_usage
+fi
+
+VERSION_ARG="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
+VERSION_FILE="$2"
+VERSION_SORT="$3"
 
 # determine sort command
 
@@ -25,14 +36,7 @@ if [ -z "$VERSION_SORT" ]; then
     fi
 fi
 
-# parse arguments
-
-if [ $# -gt 2 ]; then
-    __print_usage
-fi
-
-VERSION_ARG="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
-VERSION_FILE="$2"
+# determine bump mode
 
 if [ -z "$VERSION_ARG" ] || [ "$VERSION_ARG" == "PATCH" ]; then
     VERSION_UPDATE_MODE="PATCH"
