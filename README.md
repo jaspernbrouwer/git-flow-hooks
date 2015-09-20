@@ -67,8 +67,19 @@ That's it, all your repositories that have git-flow initialized and use `/path/t
 Configuration
 -------------
 
-Copy the file `/path/to/git-flow-hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` and change whatever you like.
-This is completely optional.
+This is completely optional!
+
+#### Global
+
+Copy the file `/path/to/git-flow-hooks/modules/git-flow-hooks-config.sh.dist` to `/path/to/git-flow-hooks/git-flow-hooks-config.sh` (hooks directory) and change whatever you like.
+
+#### Local
+
+Copy the file `/path/to/git-flow-hooks/modules/git-flow-hooks-config.sh.dist` to `.git/git-flow-hooks-config.sh` (repository root) and change whatever you like.
+
+Any settings in the local configuration file will override settings in the global one. So remove settings you _don't_ want to override.
+
+#### git-flow
 
 [git-flow (AVH Edition)][1] has some useful configuration options too.
 See its [wiki][5] for a complete list.
