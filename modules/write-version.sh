@@ -9,7 +9,7 @@ fi
 
 echo -n "$VERSION" > $VERSION_FILE && \
     git add $VERSION_FILE && \
-    git commit -m "Bumped version to $VERSION"
+    git commit -m "$(echo "$VERSION_BUMP_MESSAGE" | sed s/%version%/$VERSION/g)"
 
 if [ $? -ne 0 ]; then
     __print_fail "Unable to write version to $VERSION_FILE."

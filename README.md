@@ -99,6 +99,13 @@ A bump of that level will take place.
 
 If the commands are run with version, that version will be used (no bumping).
 
+Bump messages
+-------------
+
+git-flow-hooks bumps the version in a commit with the message "Bump version to %version%".
+
+If you want to use a different message, you can change it in the git-flow-hooks configuration.
+
 Automatic tag messages
 ----------------------
 
