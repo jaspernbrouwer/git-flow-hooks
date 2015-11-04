@@ -52,6 +52,21 @@ If you've already initialized git-flow, you can still set/change the path manual
 git config gitflow.path.hooks /path/to/git-flow-hooks
 ```
 
+Prevention hooks
+----------------
+
+The hooks that prevent direct commits to the master branch, and prevent merge marker commits, are `pre-commit` hooks.
+
+These only function if they're located in the `.git/hooks` directory of your working copy.
+In other words, after activating like described above, these hoods still won't kick in.
+
+I see 2 options:
+
+1. In stead of activating like described above, remove the `.git/hooks` directory and make it a symbolic link (`ln -s /path/to/git-flow-hooks .git/hooks`).
+2. Create a symbolic link to the `pre-commit` file (`ln -s /path/to/git-flow-hooks/pre-commit .git/hooks/pre-commit`).
+
+If you know a better way to use the `pre-commit` hooks, please let me know by opening an issue!
+
 Update
 ------
 
