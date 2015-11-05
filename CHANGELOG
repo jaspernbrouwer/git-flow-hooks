@@ -1,0 +1,57 @@
+Version v1.0.7:
+ * Fixing version text in CHANGELOG (Michael Delle)
+ * Bumped version to 1.0.7 (Michael Delle)
+ * Fixing ChangeLog (Michael Delle)
+
+Version 1.0.6:
+ * Moving ChangeLog to git flow finish (Michael Delle)
+ * Bumped version to 1.0.6 (Michael Delle)
+
+Version 1.0.5:
+ * Adding CHANGE_LOG (Michael Delle)
+ * Bumped version to 1.0.5 (Michael Delle)
+
+Version 1.0.4:
+ * Merge branch 'hotfix/1.0.4' (Michael Delle)
+ * Fixing CHANGELOG_FILE path (Michael Delle)
+ * Bumped version to 1.0.4 (Michael Delle)
+ * Update functions.sh (Michael Delle)
+ * Updating README.me (Michael Delle)
+ * Adding ROOT_DIR variable (Michael Delle)
+ * Changing permissions to gitlog-to-changelog.sh (Michael Delle)
+
+
+Version 1.0.0:
+ * Bumped version to 1.0.0 (Michael Delle)
+ * Adding .sh file extension to gitlog-to-changelog (Michael Delle)
+ * Create gitlog-to-changelog file (Michael Delle)
+ * Run gitlog-to-changelog.sh if USE_CHANGE equals true (Michael Delle)
+ * Adding __get_changelog_file function (Michael Delle)
+ * Adding CHANGELOG_FILE variable (Michael Delle)
+ * Using Boolean for USE_CHANGELOG (Michael Delle)
+ * Using boolean for USE_CHANGELOG (Michael Delle)
+ * Adding USE_CHANGELOG to config (Michael Delle)
+ * Using get_use_changelog function (Michael Delle)
+ * Simpliefied installation instructions (Jasper N. Brouwer)
+ * Updated readme (Jasper N. Brouwer)
+ * Fixed detecting gnu sort binary (Jasper N. Brouwer)
+ * Added some love to version file fix (Jasper N. Brouwer)
+ * Merge pull request #4 from dhilgarth/feature/CustomVersionFileNotRead (Jasper N. Brouwer)
+ * Refactored elif to detect literal version (Jasper N. Brouwer)
+ * Merge pull request #3 from dhilgarth/feature/WindowsSupport (Jasper N. Brouwer)
+ * Fix #2 (Daniel Hilgarth)
+ * Fix #1 (Daniel Hilgarth)
+ * Updated readme (about sorting git tags) (Jasper N. Brouwer)
+ * Sort git tags to make sure we get the highest tag (Jasper N. Brouwer)
+ * Fixed readme (Jasper N. Brouwer)
+ * Implemented automated tag messages (Jasper N. Brouwer)
+ * Changed default bump level of releases to minor (Jasper N. Brouwer)
+ * Fixed previous commit (and removed a debug "echo") (Jasper N. Brouwer)
+ * Fixed issue with looking up git tags (Jasper N. Brouwer)
+ * Refactored config and functions (Jasper N. Brouwer)
+ * Fixed .gitignore and removed real config file (Jasper N. Brouwer)
+ * Quote variables in if statements (Jasper N. Brouwer)
+ * Refactored a lot (Jasper N. Brouwer)
+ * Fixed year and copyright holders in license (Jasper N. Brouwer)
+ * Initial commit (Jasper N. Brouwer)
+
