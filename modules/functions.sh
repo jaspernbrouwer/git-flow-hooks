@@ -46,3 +46,12 @@ function __get_release_version_bumplevel {
 
     echo $VERSION_BUMPLEVEL_RELEASE
 }
+
+function __is_binary {
+    P=$(printf '%s\t-\t' -)
+    T=$(git diff --no-index --numstat /dev/null "$1")
+
+    case "$T" in "$P"*) return 0 ;; esac
+
+    return 1
+}

@@ -3,8 +3,10 @@
 MERGE_FILES=""
 
 for FILE in $(__get_commit_files); do
-    if egrep -rls "^<<<<<<< |^>>>>>>> $" $FILE > /dev/null; then
-        MERGE_FILES="$MERGE_FILES\n      $FILE"
+    if egrep -rls "^<<<<<<< |^>>>>>>> $" "$FILE" > /dev/null; then
+        if ! __is_binary "$FILE"; then
+            MERGE_FILES="$MERGE_FILES\n      $FILE"
+        fi
     fi
 done
 
