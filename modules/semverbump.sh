@@ -23,6 +23,7 @@ fi
 VERSION_ARG="$(echo "$1" | tr '[:lower:]' '[:upper:]')"
 VERSION_FILE="$2"
 VERSION_SORT="$3"
+SEMVER_FORMAT='[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+'
 
 # determine sort command
 
@@ -44,7 +45,7 @@ elif [ "$VERSION_ARG" == "MINOR" ]; then
     VERSION_UPDATE_MODE=$VERSION_ARG
 elif [ "$VERSION_ARG" == "MAJOR" ]; then
     VERSION_UPDATE_MODE=$VERSION_ARG
-elif [ $(echo "$VERSION_ARG" | grep -E '^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$') ]; then
+elif [ $(echo "$VERSION_ARG" | grep -E "^$SEMVER_FORMAT$") ]; then
     # semantic version passed as argument
     VERSION_BUMPED=$VERSION_ARG
     __print_version
@@ -55,7 +56,7 @@ fi
 # read git tags
 
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
-VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | $VERSION_SORT | tail -1)
+VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | grep -E "$SEMVER_FORMAT$" | $VERSION_SORT | tail -1)
 
 if [ ! -z "$VERSION_TAG" ]; then
     if [ ! -z "$VERSION_PREFIX" ]; then
