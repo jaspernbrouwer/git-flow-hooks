@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# Runs at the end of git flow hotfix start
+# Runs at the end of git flow release start
 #
 # Positional arguments:
 # $1 The version (including the version prefix)
 # $2 The origin remote
-# $3 The full branch name (including the feature prefix)
-# $4 The base from which this feature is started
+# $3 The full branch name (including the release prefix)
 #
 # The following variables are available as they are exported by git-flow:
 #
@@ -16,7 +15,6 @@
 VERSION=$1
 ORIGIN=$2
 BRANCH=$3
-BASE=$4
 
 # Implement your script here.
 
@@ -24,7 +22,7 @@ SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIP
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
 . "$HOOKS_DIR/modules/write-version.sh"
-. "$HOOKS_DIR/modules/notify.sh" hotfix $VERSION started
+. "$HOOKS_DIR/modules/notify.sh" release $VERSION finished
 if [ $? -ne 0 ]; then
     exit 1
 fi

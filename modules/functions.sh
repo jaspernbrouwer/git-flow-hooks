@@ -63,3 +63,19 @@ function __write_version {
         echo false
     fi
 }
+
+function __notify_to_slack {
+    if [ -n "${SLACK_WEBHOOK_URL}" ]; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+function __notify_to_hipchat {
+    if [ -n "${HIPCHAT_URL}" ] && [ -n "${HIPCHAT_ROOM_ID}" ] && [ -n "${HIPCHAT_AUTH_TOKEN}" ]; then
+        echo true
+    else
+        echo false
+    fi
+}

@@ -24,8 +24,10 @@ SCRIPT_PATH="$0"; while [ -h "$SCRIPT_PATH" ]; do SCRIPT_PATH=$(readlink "$SCRIP
 . "$(dirname $SCRIPT_PATH)/modules/functions.sh"
 
 . "$HOOKS_DIR/modules/write-version.sh"
+. "$HOOKS_DIR/modules/notify.sh" release $VERSION started
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# To terminate the git-flow action, return a non-zero exit code.
 exit 0
