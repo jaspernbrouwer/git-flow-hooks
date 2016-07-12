@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $(__write_version) == false ]]; then
+    return 0
+fi
+
 VERSION_FILE=$(__get_version_file)
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
 
