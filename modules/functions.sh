@@ -55,3 +55,11 @@ function __is_binary {
 
     return 1
 }
+
+function __write_version {
+    if [ "${VERSION_WRITE}" == true ]; then
+        echo true
+    else
+        echo false
+    fi
+}
