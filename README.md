@@ -10,6 +10,7 @@ What does it do?
 - Prevent merge marker commits.
 - Automatically bump versions when starting a release or hotfix. Versions are generated, written to file and committed.
 - Automatically specify tag messages.
+- Send notifications in Slack, Hipchat.
 
 Usage
 =====
@@ -111,7 +112,14 @@ If that isn't found, it assumes the current version is `0.0.0`.
 Alternatively you may use `patch`, `minor` and `major` as version.
 A bump of that level will take place.
 
-If the commands are run with version, that version will be used (no bumping).
+You can avoid writing into the version-file by specifying in your config file:
+
+    VERSION_WRITE=false
+
+If the commands are run with version, that version will be used (no bumping):
+
+    git flow release start 1.1.0
+    git flow hostfix start 1.1.2
 
 Bump messages
 -------------
@@ -131,6 +139,33 @@ git config gitflow.release.finish.message "Release %tag%"
 ```
 
 If you like, you can change the tag-placeholder (`%tag%` in the example above) in the git-flow-hooks configuration.
+
+Sending notifications
+---------------------
+
+You can also send notifications into your messengers:
+
+### Slack
+
+![Slack notification](./notification_slack.png)
+
+Set in `git-flow-hooks-config.sh` file your [Slack webhook](https://my.slack.com/services/new/incoming-webhook/) url:
+
+```sh
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/S07B1234/A0E0J1234/F1uyuHs91IJhJwlgHaPw1234"
+```
+
+### Hipchat
+
+![Hipchat notification](./notification_hipchat.png)
+
+Set in `git-flow-hooks-config.sh` file your Hipchat credentials (API Version 2 Access from your Account Settings):
+
+```sh
+HIPCHAT_URL="https://messenger.your.domain"
+HIPCHAT_ROOM_ID=123
+HIPCHAT_AUTH_TOKEN="jmaFPoAiAWuj78ugGNfLa12ihLoG0bA9ilQW1234"
+```
 
 License
 =======

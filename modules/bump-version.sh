@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $(__write_version) == false ]]; then
+    return 0
+fi
+
 if [ -z "$VERSION" ]; then
     if [ "$1" == "hotfix" ]; then
         VERSION=$(__get_hotfix_version_bumplevel)
