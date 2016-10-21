@@ -132,6 +132,16 @@ git config gitflow.release.finish.message "Release %tag%"
 
 If you like, you can change the tag-placeholder (`%tag%` in the example above) in the git-flow-hooks configuration.
 
+Plugins
+-------
+
+We want to create a plugin-like structure where users can add functionality in a more uniform way.
+Unfortunately, that would take some time and testing to implement.
+
+While it's in progress, you can try to use the following forks:
+
+* [Send notifications with changelog to Slack and HipChat](https://github.com/exAspArk/git-flow-hooks/tree/notify#sending-notifications) ([diff](https://github.com/jaspernbrouwer/git-flow-hooks/compare/master...exAspArk:notify))
+
 License
 =======
 
