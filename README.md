@@ -111,7 +111,18 @@ If that isn't found, it assumes the current version is `0.0.0`.
 Alternatively you may use `patch`, `minor` and `major` as version.
 A bump of that level will take place.
 
-If the commands are run with version, that version will be used (no bumping).
+If the commands are run with version, that version will be used (no bumping):
+
+```sh
+git flow release start 1.1.0
+git flow hostfix start 1.1.2
+```
+
+You can avoid writing to the version-file by specifying in your `git-flow-hooks-config.sh`:
+
+```sh
+VERSION_WRITE=false
+```
 
 Bump messages
 -------------
