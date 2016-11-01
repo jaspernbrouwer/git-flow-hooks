@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ $(__write_version) == false ]]; then
-    return 0
-fi
-
 if [ -z "$VERSION" ]; then
     if [ "$1" == "hotfix" ]; then
         VERSION=$(__get_hotfix_version_bumplevel)
@@ -15,6 +11,11 @@ if [ -z "$VERSION" ]; then
 fi
 
 VERSION_FILE=$(__get_version_file)
+
+if [[ $(__write_version) == false ]]; then
+    rm -f $VERSION_FILE
+fi
+
 VERSION=$($HOOKS_DIR/modules/semverbump.sh "$VERSION" "$VERSION_FILE" "$VERSION_SORT")
 
 if [ $? -ne 0 ]; then
