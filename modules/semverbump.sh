@@ -56,7 +56,7 @@ fi
 # read git tags
 
 VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag)
-VERSION_TAG=$(git tag -l "$VERSION_PREFIX*" | grep -E "$SEMVER_FORMAT$" | $VERSION_SORT | tail -1)
+VERSION_TAG=$(git tag -l | grep -E "^$VERSION_PREFIX$SEMVER_FORMAT$" | $VERSION_SORT | tail -1)
 
 if [ ! -z "$VERSION_TAG" ]; then
     if [ ! -z "$VERSION_PREFIX" ]; then
