@@ -23,7 +23,7 @@ Clone this repository somewhere on your disk.
 git clone git@github.com:jaspernbrouwer/git-flow-hooks.git
 ```
 
-Whenever your read `/path/to/git-flow-hooks`, replace it with the actual path to your clone/working copy.
+Whenever you read `/path/to/git-flow-hooks`, replace it with the actual path to your clone/working copy.
 
 ### OS X
 
